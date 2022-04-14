@@ -22,3 +22,4 @@ function createElement (type, config, ...children) {
         }
     }
 }
+const React = { createElement }
