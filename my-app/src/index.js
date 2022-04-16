@@ -1,11 +1,12 @@
 import React from 'react';
+// import React from './3_virtualDOM/createElement';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 const ele = (
     <div id='A1'>
         <div id='B1'>
-            <div id='C1'></div>
-            <div id='C2'></div>
+            <div id='C1'>C1</div>
+            <div id='C2'>C2</div>
         </div>
         <div id='B2'></div>
     </div>

@@ -1,3 +1,4 @@
+import { ELEMENT_TEXT } from "../constants"
 /**
  * 创建元素（虚拟DOM）的方法
  * @param {*} type 元素的类型（标签）（DOM）
@@ -5,6 +6,8 @@
  * @param  {...any} children 放着所有的儿子，这里会做成一个数组
  */
 function createElement (type, config, ...children) {
+    delete config._self
+    delete config._source
     return {
         type,
         props: {
@@ -13,7 +16,7 @@ function createElement (type, config, ...children) {
                 let child = ele
                 if (typeof child !== 'object') {
                     child = {
-                        type: Symbol.for('ELEMENT_TEXT'),
+                        type: ELEMENT_TEXT,
                         props: { text: ele, children: [] }
                     }
                 }
@@ -23,3 +26,4 @@ function createElement (type, config, ...children) {
     }
 }
 const React = { createElement }
+export default React
