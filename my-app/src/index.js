@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
+let style = { border: '3px solid red', margin: '5px' }
 const ele = (
-    <div id='A1'>
-        <div id='B1'>
-            <div id='C1'></div>
-            <div id='C2'></div>
+    <div id='A1' style={style}>
+        A1
+        <div id='B1' style={style}>
+            B1
+            <div id='C1' style={style}>C1</div>
+            <div id='C2' style={style}>C2</div>
         </div>
-        <div id='B2'></div>
+        <div id='B2' style={style}>B1</div>
     </div>
 )
 console.log(ele);
