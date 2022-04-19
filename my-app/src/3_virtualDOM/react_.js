@@ -1,11 +1,11 @@
-import { ELEMENT_TEXT } from "../constants"
+import ELEMENT_TEXT from '../constants'
 /**
  * 创建元素（虚拟DOM）的方法
  * @param {*} type 元素的类型（标签）（DOM）
  * @param {*} config 配置对象属性key ref
  * @param  {...any} children 放着所有的儿子，这里会做成一个数组
  */
-function createElement (type, config, ...children) {
+function createRoot (type, config, ...children) {
     delete config._self
     delete config._source
     return {
@@ -25,5 +25,5 @@ function createElement (type, config, ...children) {
         }
     }
 }
-const React = { createElement }
+const React = { createRoot }
 export default React
