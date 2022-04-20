@@ -19,11 +19,15 @@ function render(element, container) { // container = root DOM节点
 
 /**
  * 从根节点开始渲染和调度 
- * 两个阶段：diff, render 
- * diff阶段：对比新旧的虚拟DOM，进行增量更新或创建。
- * render阶段：这个阶段比较消耗时间，我们可以对任务进行拆分
- *            拆分的维度是虚拟DOM节点，此阶段可以暂停
- * render阶段的成功是 Effect list 知道哪些节点更新，删除或增加
+ * 两个阶段：render, commit
+ * render阶段:
+ *      diff比较：对比新旧的虚拟DOM，进行增量更新或创建。
+ *      这个阶段比较消耗时间，我们可以对任务进行拆分
+ *      拆分的维度是虚拟DOM节点，此阶段可以暂停
+ *      成果是 Effect list 知道哪些节点更新，删除或增加
+ *      其中两个任务：
+ *          1.更具虚拟DOM生成Fiber树
+ *          2.收集EffectList
  * commit阶段：进行DOM更新创建阶段，此阶段不能暂停，要一气呵成
  */
 let nextUnitOfWork = null // 工作单元
@@ -32,6 +36,17 @@ function scheduleRoot(rootFiber) {
     // rootFiber：{ tag: TAG_ROOT, stateNode: container, props: { children: [element] } }
     workInProgressRoot = rootFiber
     nextUnitOfWork = rootFiber
+}
+function performUnitOfWork(currentFiber) {
+    // 开始工作，处理当前fiber节点
+    beginWork(currentFiber)
+}
+/**
+ * @name beginWork 开始工作处理firber节点
+ * @completeUnitOfWork 子节点处理完毕
+ */
+function beginWork() {
+
 }
 // 循环执行工作
 function workLoop(deadline) {
